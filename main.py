@@ -119,9 +119,9 @@ elif nav_selection == "Predict":
     with col1:
         ghg_scope = st.text_input("Masukan GHG Scope")
     with col2:
-        energy_use_gj = st.number_input("Masukan Energy Use (GJ)", min_value=0.0)
+        energy_use_gj = st.number_input("Masukan Energy Use (GJ)", min_value=0)
     with col1:
-        emissions_kt = st.number_input("Masukan Emissions (kt)", min_value=0.0)
+        emissions_kt = st.number_input("Masukan Emissions (kt)", min_value=0)
     with col2:
         energy_use_category = st.selectbox("Pilih Energy Use Category", df['Energy use category'].unique())
     data_present = st.selectbox("Pilih Data Present", df['Data_present'].unique())
