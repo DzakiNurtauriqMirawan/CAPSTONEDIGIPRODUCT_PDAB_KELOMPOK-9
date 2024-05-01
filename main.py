@@ -63,6 +63,7 @@ elif nav_selection == "Distribusi":
 
     # Menampilkan bar plot menggunakan Streamlit
     st.pyplot(plt.gcf())
+    st.write('Dari visualisasi ini, terlihat bahwa "National Defence" memiliki total emisi tertinggi di antara 10 organisasi federal yang ditampilkan dalam data. Sedangkan organisasi "Natural Resource Canada" memiliki total emisi terendah di antara 10 organisasi tersebut.')
 
 # Jika pilihan di sidebar adalah "Hubungan"
 elif nav_selection == "Hubungan":
