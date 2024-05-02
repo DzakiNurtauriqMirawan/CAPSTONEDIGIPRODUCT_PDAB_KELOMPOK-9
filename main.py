@@ -145,7 +145,7 @@ elif nav_selection == "Predict":
         prediction = predict(input_data, model)
 
         # Tampilkan hasil prediksi sebagai teks
-        if prediction[0] == 0:
+        if prediction == 0:
             msg = 'This Company too much using: **Facilities**'
         else:
             msg = 'This Company too much using: **Fleet**'
