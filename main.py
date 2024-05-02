@@ -114,7 +114,7 @@ elif nav_selection == "Predict":
     with col1 :
         federal_organization = st.selectbox("Pilih Federal Organization", df['Federal organization'].unique())
     with col2:
-        fiscal_year = st.text_input("Masukan Fiscal Year")
+        fiscal_year = st.number_input("Masukan Fiscal Year", min_value=0)
     # ghg_source = st.text_input("GHG Source")
     with col1:
         ghg_scope = st.selectbox("Pilih GHG Scope", df['GHG scope'].unique())
