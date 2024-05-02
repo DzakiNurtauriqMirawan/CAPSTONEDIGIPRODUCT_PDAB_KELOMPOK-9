@@ -55,7 +55,9 @@ if nav_selection == "Home":
     st.write("Baris: ", df.shape[0])
     st.write("Kolom: ", df.shape[1])
 
-    st.text(df.info())
+    df.corr(numeric_only = True)
+
+    px.imshow(df.corr(numeric_only = True))
     
 
 # Jika pilihan di sidebar adalah "Distribusi"
