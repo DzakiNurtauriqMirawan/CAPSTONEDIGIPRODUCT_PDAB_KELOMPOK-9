@@ -51,7 +51,9 @@ if nav_selection == "Home":
 
     st.header('Tampilan Dataset')
     df
-    
+
+    # Menampilkan tipe data dari setiap kolom
+    st.write("Tipe Data:", df.dtypes)
     st.write("Jumlah baris pada dataset yang digunakan ialah : ", df.shape[0])
     st.write("Jumlah kolom pada dataset yang digunakan ialah : ", df.shape[1])
 
