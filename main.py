@@ -49,7 +49,7 @@ if nav_selection == "Home":
     st.write('- Evaluasi Model: Mengukur kinerja model menggunakan metrik yang sesuai seperti akurasi, presisi, recall, dan F1-score.')
     st.write('- Interpretasi Hasil: Menganalisis hasil dari model untuk mengidentifikasi sumber-sumber utama emisi dan menganalisis kontribusi sektor-sektor tertentu.')
 
-    st.head('Tampilan Dataset')
+    st.header('Tampilan Dataset')
     df
     
 
