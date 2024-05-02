@@ -33,11 +33,14 @@ nav_selection = st.sidebar.selectbox("Go to", ["Home", "Distribusi", "Hubungan",
 if nav_selection == "Home":
     st.header('Business Objective')
     st.write('Tujuan dari proyek ini adalah untuk membantu pemerintah Kanada dalam mengidentifikasi sumber utama emisi gas rumah kaca di negara mereka. Dengan pemahaman yang lebih baik tentang sumber-sumber utama emisi, pemerintah dapat merancang kebijakan yang lebih efektif untuk mengurangi emisi dan memenuhi komitmen mereka terhadap perubahan iklim global.')
+    
     st.header('Asses Situations')
     st.write('Kanada adalah salah satu negara dengan emisi gas rumah kaca yang tinggi, terutama karena industri minyak dan gas serta sektor transportasi yang besar. Untuk mengurangi dampak perubahan iklim, pemerintah Kanada membutuhkan pemahaman yang lebih mendalam tentang sumber-sumber utama emisi tersebut. Saat ini, data yang ada mungkin tersebar dan sulit untuk diolah secara efektif. Oleh karena itu, diperlukan pendekatan klasifikasi yang tepat untuk mengidentifikasi sumber-sumber utama emisi ini.')
+    
     st.header('Data Mining Goals')
     st.write('- Mengidentifikasi sumber-sumber utama emisi gas rumah kaca di Kanada.')
     st.write('- Membuat model klasifikasi yang dapat mengklasifikasikan jenis emisi berdasarkan data yang ada.')
+    
     st.header('Project Plan')
     st.write('- Pengumpulan Data: Mengumpulkan data yang relevan tentang emisi gas rumah kaca di Kanada dari berbagai sumber seperti lembaga pemerintah, organisasi lingkungan, dan industri terkait.')
     st.write('- Persiapan Data: Membersihkan dan mempersiapkan data untuk analisis, termasuk penghapusan nilai yang hilang, normalisasi data, dan pemrosesan lainnya.')
@@ -45,6 +48,10 @@ if nav_selection == "Home":
     st.write('- Pembuatan Model: Membangun model klasifikasi menggunakan teknik seperti decision tree, GNB, atau KNN untuk mengidentifikasi sumber-sumber utama emisi.')
     st.write('- Evaluasi Model: Mengukur kinerja model menggunakan metrik yang sesuai seperti akurasi, presisi, recall, dan F1-score.')
     st.write('- Interpretasi Hasil: Menganalisis hasil dari model untuk mengidentifikasi sumber-sumber utama emisi dan menganalisis kontribusi sektor-sektor tertentu.')
+
+    st.head('Tampilan Dataset')
+    df
+    
 
 # Jika pilihan di sidebar adalah "Distribusi"
 elif nav_selection == "Distribusi":
