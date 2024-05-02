@@ -117,7 +117,7 @@ elif nav_selection == "Predict":
         fiscal_year = st.text_input("Masukan Fiscal Year")
     # ghg_source = st.text_input("GHG Source")
     with col1:
-        ghg_scope = st.selectbox("Masukan GHG Scope", df['GHG scope'].unique())
+        ghg_scope = st.selectbox("Pilih GHG Scope", df['GHG scope'].unique())
     with col2:
         energy_use_gj = st.number_input("Masukan Energy Use (GJ)", min_value=0)
     with col1:
