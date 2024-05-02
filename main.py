@@ -51,6 +51,8 @@ if nav_selection == "Home":
 
     st.header('Tampilan Dataset')
     df
+    print("Baris: ", df.shape[0])
+    print("Kolom: ", df.shape[1])
     
 
 # Jika pilihan di sidebar adalah "Distribusi"
