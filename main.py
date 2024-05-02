@@ -52,21 +52,10 @@ if nav_selection == "Home":
     st.header('Tampilan Dataset')
     df
     
-    st.write("Baris: ", df.shape[0])
-    st.write("Kolom: ", df.shape[1])
+    st.write("Jumlah baris pada dataset yang digunakan ialah : ", df.shape[0])
+    st.write("Jumlah kolom pada dataset yang digunakan ialah : ", df.shape[1])
 
-    # Menghitung korelasi antar kolom numerik
-    correlation_matrix = df.corr()
 
-    # Menampilkan korelasi antar kolom numerik menggunakan Streamlit
-    st.write("Korelasi antar kolom numerik:")
-    st.dataframe(correlation_matrix)
-
-    # Menghitung korelasi antar kolom numerik
-    correlation_matrix = df.corr()
-
-    # Menampilkan matriks korelasi menggunakan Plotly Express di Streamlit
-    st.plotly_chart(px.imshow(correlation_matrix))
     
 
 # Jika pilihan di sidebar adalah "Distribusi"
