@@ -46,6 +46,12 @@ if nav_selection == "Home":
     st.write('- Evaluasi Model: Mengukur kinerja model menggunakan metrik yang sesuai seperti akurasi, presisi, recall, dan F1-score.')
     st.write('- Interpretasi Hasil: Menganalisis hasil dari model untuk mengidentifikasi sumber-sumber utama emisi dan menganalisis kontribusi sektor-sektor tertentu.')
 
+    st.title('Dataset')
+    df
+    # Menampilkan tipe data dari setiap kolom
+    st.write("Tipe Data:")
+    st.write(df.dtypes)
+
 # Jika pilihan di sidebar adalah "Distribusi"
 elif nav_selection == "Distribusi":
     # Menyiapkan data
