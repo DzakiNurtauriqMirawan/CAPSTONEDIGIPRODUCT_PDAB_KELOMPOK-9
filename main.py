@@ -27,20 +27,17 @@ st.title("Analisis Emisi Gas Rumah Kaca di Kanada: Pendekatan Klasifikasi untuk 
 st.sidebar.title('Dashboard')
 
 # Daftar navigasi
-nav_selection = st.sidebar.selectbox("Go to", ["Home", "Distribusi", "Hubungan", "Perbandingan dan Komposisi", "Predict"])
+nav_selection = st.sidebar.selectbox("Go to", ["Home", "Distribusi", "Hubungan", "Perbandingan", "Komposisi", "Predict"])
 
 # Jika pilihan di sidebar adalah "Home"
 if nav_selection == "Home":
     st.header('Business Objective')
     st.write('Tujuan dari proyek ini adalah untuk membantu pemerintah Kanada dalam mengidentifikasi sumber utama emisi gas rumah kaca di negara mereka. Dengan pemahaman yang lebih baik tentang sumber-sumber utama emisi, pemerintah dapat merancang kebijakan yang lebih efektif untuk mengurangi emisi dan memenuhi komitmen mereka terhadap perubahan iklim global.')
-    
     st.header('Asses Situations')
     st.write('Kanada adalah salah satu negara dengan emisi gas rumah kaca yang tinggi, terutama karena industri minyak dan gas serta sektor transportasi yang besar. Untuk mengurangi dampak perubahan iklim, pemerintah Kanada membutuhkan pemahaman yang lebih mendalam tentang sumber-sumber utama emisi tersebut. Saat ini, data yang ada mungkin tersebar dan sulit untuk diolah secara efektif. Oleh karena itu, diperlukan pendekatan klasifikasi yang tepat untuk mengidentifikasi sumber-sumber utama emisi ini.')
-    
     st.header('Data Mining Goals')
     st.write('- Mengidentifikasi sumber-sumber utama emisi gas rumah kaca di Kanada.')
     st.write('- Membuat model klasifikasi yang dapat mengklasifikasikan jenis emisi berdasarkan data yang ada.')
-    
     st.header('Project Plan')
     st.write('- Pengumpulan Data: Mengumpulkan data yang relevan tentang emisi gas rumah kaca di Kanada dari berbagai sumber seperti lembaga pemerintah, organisasi lingkungan, dan industri terkait.')
     st.write('- Persiapan Data: Membersihkan dan mempersiapkan data untuk analisis, termasuk penghapusan nilai yang hilang, normalisasi data, dan pemrosesan lainnya.')
@@ -48,17 +45,6 @@ if nav_selection == "Home":
     st.write('- Pembuatan Model: Membangun model klasifikasi menggunakan teknik seperti decision tree, GNB, atau KNN untuk mengidentifikasi sumber-sumber utama emisi.')
     st.write('- Evaluasi Model: Mengukur kinerja model menggunakan metrik yang sesuai seperti akurasi, presisi, recall, dan F1-score.')
     st.write('- Interpretasi Hasil: Menganalisis hasil dari model untuk mengidentifikasi sumber-sumber utama emisi dan menganalisis kontribusi sektor-sektor tertentu.')
-
-    st.header('Tampilan Dataset')
-    df
-
-    # Menampilkan tipe data dari setiap kolom
-    st.write("Tipe Data:", df.dtypes)
-    st.write("Jumlah baris pada dataset yang digunakan ialah : ", df.shape[0])
-    st.write("Jumlah kolom pada dataset yang digunakan ialah : ", df.shape[1])
-
-
-    
 
 # Jika pilihan di sidebar adalah "Distribusi"
 elif nav_selection == "Distribusi":
@@ -77,7 +63,6 @@ elif nav_selection == "Distribusi":
 
     # Menampilkan bar plot menggunakan Streamlit
     st.pyplot(plt.gcf())
-    st.write('Dari visualisasi ini, terlihat bahwa "National Defence" memiliki total emisi tertinggi di antara 10 organisasi federal yang ditampilkan dalam data. Sedangkan organisasi "Natural Resource Canada" memiliki total emisi terendah di antara 10 organisasi tersebut.')
 
 # Jika pilihan di sidebar adalah "Hubungan"
 elif nav_selection == "Hubungan":
@@ -120,7 +105,8 @@ elif nav_selection == "Komposisi":
         from_counts = df['GHG source'].value_counts()
 
         # Membuat plot histogram
-        from_counts.plot(kind='bar', color='skyblue')
+        fig, ax = plt.subplots()  # Membuat objek figur
+        from_counts.plot(kind='bar', color='skyblue', ax=ax)  # Menggunakan objek figur yang telah dibuat
 
         # Menambahkan label dan judul
         plt.title('Histogram GHG source')
@@ -128,23 +114,48 @@ elif nav_selection == "Komposisi":
         plt.ylabel('Counts')
 
         # Menampilkan plot
-        st.pyplot()
+        st.pyplot(fig)  # Menampilkan objek figur
 
     # Menambahkan judul untuk aplikasi
     st.title('Histogram GHG Source')
 
     # Menampilkan plot histogram saat aplikasi dijalankan
     plot_histogram()
+    # Fungsi untuk membuat area chart
+    def create_area_chart(df):
+        # Mengelompokkan data berdasarkan 'GHG source' dan 'Fiscal year'
+        grouped_data = df.groupby(['Fiscal year', 'GHG source']).size().unstack()
+
+        # Membuat area chart
+        fig, ax = plt.subplots(figsize=(10, 6))
+        grouped_data.plot(kind='area', ax=ax, alpha=0.5)
+
+        # Menambahkan label dan judul
+        ax.set_title('Area Chart GHG source per Year')
+        ax.set_xlabel('Fiscal year')
+        ax.set_ylabel('Counts')
+
+        # Menampilkan legenda di bawah plot
+        ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.3), ncol=len(grouped_data.columns))
+
+        # Menampilkan plot
+        st.pyplot(fig)
+
+    # Menampilkan area chart saat aplikasi dijalankan
+    st.title('Area Chart GHG source per Tahun')
+    create_area_chart(df)
 
 # Jika pilihan di sidebar adalah "Predict"
 elif nav_selection == "Predict":
     # Memuat model yang telah dilatih
     model = load_model()
+    print("Model berhasil dimuat.")
 
     # Memuat data
     # Misalkan df adalah dataframe yang berisi data Federal organization, Fiscal year, GHG source, GHG scope,
     # Energy use (GJ), Emissions (kt), Energy use category, dan Data_present
     df = pd.read_csv('data-mapping.csv')
+    # print("Data berhasil dimuat.")
 
     # Tampilkan form input untuk pengguna
     st.subheader("Predict Emisi Gas Rumah Kaca di Kanada")
@@ -152,10 +163,9 @@ elif nav_selection == "Predict":
     with col1 :
         federal_organization = st.selectbox("Pilih Federal Organization", df['Federal organization'].unique())
     with col2:
-        fiscal_year = st.number_input("Masukan Fiscal Year", min_value=0)
-    # ghg_source = st.text_input("GHG Source")
+        fiscal_year = st.selectbox("Pilih Fiscal Year", df['Fiscal year'].unique())
     with col1:
-        ghg_scope = st.selectbox("Pilih GHG Scope", df['GHG scope'].unique())
+        ghg_scope = st.selectbox("Pilih GHG Scope",  df['GHG scope'].unique())
     with col2:
         energy_use_gj = st.number_input("Masukan Energy Use (GJ)", min_value=0)
     with col1:
@@ -163,28 +173,46 @@ elif nav_selection == "Predict":
     with col2:
         energy_use_category = st.selectbox("Pilih Energy Use Category", df['Energy use category'].unique())
     data_present = st.selectbox("Pilih Data Present", df['Data_present'].unique())
+    print("Form input ditampilkan.")
 
     # Jika tombol "Predict" ditekan
     if st.button("Predict"):
-        # Ubah input pengguna menjadi DataFrame
-        input_data = pd.DataFrame({
-            "Federal organization": [federal_organization],
-            "Fiscal year": [fiscal_year],
-            "GHG scope": [ghg_scope],
-            "Energy use (GJ)": [energy_use_gj],
-            "Emissions (kt)": [emissions_kt],
-            "Energy use category": [energy_use_category],
-            "Data_present": [data_present],
-        })
-
-        # Lakukan prediksi dengan model yang telah dilatih
-        prediction = predict(input_data, model)
-
-        # Tampilkan hasil prediksi sebagai teks
-        if prediction == 0:
-            msg = 'This Company too much using: **Facilities**'
+        print("Tombol Predict ditekan.")
+        # Memeriksa apakah kombinasi nilai input ada dalam DataFrame
+        if (federal_organization not in df['Federal organization'].unique()) or \
+        (fiscal_year not in df['Fiscal year'].unique()) or \
+        (ghg_scope not in df['GHG scope'].unique()) or \
+        (energy_use_gj not in df['Energy use (GJ)'].unique()) or \
+        (energy_use_category not in df['Energy use category'].unique()) or \
+        (data_present not in df['Data_present'].unique()):
+            st.error("Input tidak sesuai dengan data yang tersedia dalam dataset.")
+            print("Input tidak sesuai.")
         else:
-            msg = 'This Company too much using: **Fleet**'
+            # Ubah input pengguna menjadi DataFrame
+            input_data = pd.DataFrame({
+                "Federal organization": [federal_organization],
+                "Fiscal year": [fiscal_year],
+                # "GHG source": [ghg_source],
+                "GHG scope": [ghg_scope],
+                "Energy use (GJ)": [energy_use_gj],
+                "Emissions (kt)": [emissions_kt],
+                "Energy use category": [energy_use_category],
+                "Data_present": [data_present],
+            })
+            print("Input data berhasil dibuat:", input_data)
+            
+            # Lakukan prediksi dengan model yang telah dilatih
+            prediction = predict(input_data, model)
+            print("Prediksi berhasil dilakukan:", prediction)
 
-        # Tampilkan hasil prediksi sebagai teks menggunakan markdown
-        st.markdown(msg)
+            # Tampilkan hasil prediksi sebagai teks
+            if prediction == 1:
+                msg = 'This Company too much using: **Fleet**'
+            else:
+                msg = 'This Company too much using: **Facilities**'
+
+            # Tampilkan hasil prediksi sebagai teks menggunakan markdown
+            st.markdown(msg)
+
+
+
