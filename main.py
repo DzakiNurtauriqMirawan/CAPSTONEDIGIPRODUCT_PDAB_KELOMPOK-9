@@ -114,28 +114,27 @@ elif nav_selection == "Perbandingan":
 
 # Jika pilihan di sidebar adalah "Perbandingan dan Komposisi"
 elif nav_selection == "Komposisi":
-    
-# Memasukkan kode untuk membuat plot histogram ke dalam sebuah fungsi
-def plot_histogram():
-    # Mengambil nilai counts dari 'GHG source'
-    from_counts = df['GHG source'].value_counts()
+    # Memasukkan kode untuk membuat plot histogram ke dalam sebuah fungsi
+    def plot_histogram():
+        # Mengambil nilai counts dari 'GHG source'
+        from_counts = df['GHG source'].value_counts()
 
-    # Membuat plot histogram
-    from_counts.plot(kind='bar', color='skyblue')
+        # Membuat plot histogram
+        from_counts.plot(kind='bar', color='skyblue')
 
-    # Menambahkan label dan judul
-    plt.title('Histogram GHG source')
-    plt.xlabel('GHG source')
-    plt.ylabel('Counts')
+        # Menambahkan label dan judul
+        plt.title('Histogram GHG source')
+        plt.xlabel('GHG source')
+        plt.ylabel('Counts')
 
-    # Menampilkan plot
-    st.pyplot()
+        # Menampilkan plot
+        st.pyplot()
 
-# Menambahkan judul untuk aplikasi
-st.title('Histogram GHG Source')
+    # Menambahkan judul untuk aplikasi
+    st.title('Histogram GHG Source')
 
-# Menampilkan plot histogram saat aplikasi dijalankan
-plot_histogram()
+    # Menampilkan plot histogram saat aplikasi dijalankan
+    plot_histogram()
 
 # Jika pilihan di sidebar adalah "Predict"
 elif nav_selection == "Predict":
@@ -166,13 +165,11 @@ elif nav_selection == "Predict":
     data_present = st.selectbox("Pilih Data Present", df['Data_present'].unique())
 
     # Jika tombol "Predict" ditekan
-    # Jika tombol "Predict" ditekan
     if st.button("Predict"):
         # Ubah input pengguna menjadi DataFrame
         input_data = pd.DataFrame({
             "Federal organization": [federal_organization],
             "Fiscal year": [fiscal_year],
-            # "GHG source": [ghg_source],
             "GHG scope": [ghg_scope],
             "Energy use (GJ)": [energy_use_gj],
             "Emissions (kt)": [emissions_kt],
