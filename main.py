@@ -98,7 +98,7 @@ elif nav_selection == "Hubungan":
     st.write('Visualisasi berikut adalah sebuah heatmap yang menggambarkan matriks korelasi antara kolom-kolom numerik dalam suatu dataset. Setiap sel dalam heatmap menunjukkan nilai korelasi antara dua kolom yang sesuai. Kolom-kolom yang dianalisis dalam heatmap ini adalah "GHG scope", "Energy use (GJ)", dan "Emissions (kt)". Korelasi antara kolom "GHG scope" dan "Energy use (GJ)" adalah 0.16, antara "GHG scope" dan "Emissions (kt)" adalah 0.13, dan antara "Energy use (GJ)" dan "Emissions (kt)" adalah 0.95. Warna dari setiap sel menunjukkan kekuatan korelasi, di mana warna biru menunjukkan korelasi negatif, warna merah menunjukkan korelasi positif, dan intensitas warna mencerminkan kekuatan korelasi. Dari heatmap ini, dapat dilihat bahwa "Energy use (GJ)" dan "Emissions (kt)" memiliki korelasi positif yang kuat, ditunjukkan oleh warna merah yang intens di antara kedua kolom tersebut. Sedangkan "GHG scope" memiliki korelasi yang lemah dengan kedua kolom lainnya, ditunjukkan oleh warna yang mendekati biru atau merah yang lebih gelap.')
 
 # Jika pilihan di sidebar adalah "Perbandingan dan Komposisi"
-elif nav_selection == "Perbandingan dan Komposisi":
+elif nav_selection == "Perbandingan":
     # Menghitung nilai counts
     from_counts = df['GHG source'].value_counts()
 
@@ -111,6 +111,9 @@ elif nav_selection == "Perbandingan dan Komposisi":
     # Menampilkan pie chart menggunakan Streamlit
     st.pyplot(fig)
     st.write('Visualisasi tersebut adalah sebuah diagram lingkaran (pie chart) yang menunjukkan proporsi data antara dua kategori, yaitu "facilities" dan "fleet" dari kolom "GHG source". Setiap bagian dari diagram lingkaran mewakili persentase dari total data.Dari diagram ini, terlihat bahwa kategori "facilities" memegang proporsi lebih besar dari total data, sebesar 53%, sedangkan kategori "fleet" memiliki proporsi sebesar 47%. Diagram lingkaran digunakan untuk dengan jelas memvisualisasikan proporsi atau persentase dari suatu kategori dalam sebuah dataset. Dalam hal ini, warna biru mewakili kategori "facilities", sementara warna oranye mewakili kategori "fleet".')
+
+# Jika pilihan di sidebar adalah "Perbandingan dan Komposisi"
+elif nav_selection == "Komposisi":
 
 # Jika pilihan di sidebar adalah "Predict"
 elif nav_selection == "Predict":
