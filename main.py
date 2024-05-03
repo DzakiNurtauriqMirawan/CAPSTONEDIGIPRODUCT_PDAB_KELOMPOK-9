@@ -114,6 +114,28 @@ elif nav_selection == "Perbandingan":
 
 # Jika pilihan di sidebar adalah "Perbandingan dan Komposisi"
 elif nav_selection == "Komposisi":
+    
+# Memasukkan kode untuk membuat plot histogram ke dalam sebuah fungsi
+def plot_histogram():
+    # Mengambil nilai counts dari 'GHG source'
+    from_counts = df['GHG source'].value_counts()
+
+    # Membuat plot histogram
+    from_counts.plot(kind='bar', color='skyblue')
+
+    # Menambahkan label dan judul
+    plt.title('Histogram GHG source')
+    plt.xlabel('GHG source')
+    plt.ylabel('Counts')
+
+    # Menampilkan plot
+    st.pyplot()
+
+# Menambahkan judul untuk aplikasi
+st.title('Histogram GHG Source')
+
+# Menampilkan plot histogram saat aplikasi dijalankan
+plot_histogram()
 
 # Jika pilihan di sidebar adalah "Predict"
 elif nav_selection == "Predict":
