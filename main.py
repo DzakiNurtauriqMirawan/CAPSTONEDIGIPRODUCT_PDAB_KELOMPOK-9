@@ -121,7 +121,7 @@ elif nav_selection == "Komposisi":
 
     # Menampilkan plot histogram saat aplikasi dijalankan
     plot_histogram()
-    st.write('Visualisasi diatas menampilkan komposisi dari tabel GHG source, tabel tersebut berisikian Facilities dan Fleet. Dari hasil tersebut memperlihatkan bahwa Facilities lebih tinggi dengan perhitungan 1000 keatas dibandingkan Fleet dengan perhitungan hampir mendekati 1000')
+    st.write('Visualisasi diatas menampilkan komposisi dari tabel GHG source, tabel tersebut berisikian Facilities dan Fleet. Dari hasil tersebut memperlihatkan bahwa Facilities lebih tinggi dengan perhitungan 1000 keatas dibandingkan Fleet dengan perhitungan hampir mendekati 1000.')
     # Fungsi untuk membuat area chart
     def create_area_chart(df):
         # Mengelompokkan data berdasarkan 'GHG source' dan 'Fiscal year'
@@ -145,7 +145,7 @@ elif nav_selection == "Komposisi":
     # Menampilkan area chart saat aplikasi dijalankan
     st.title('Area Chart GHG source per Tahun')
     create_area_chart(df)
-    st.write('Visualisasi diatas menampilkan Area chart dari GHG scope bedasrkan tahun. Pada tahun 2005-06 menghasilkan Fleet tinggi sampai 200 sedangkan Facilities hanya menyentuh diangka 125, lanjut pada tahun 2011-12 sampai 2015-16 terjadi penurunan antara Facilities dan Fleet. Akan tetapi Fleet masih diperingkat atas dengan menyentuh angka 100 sedangkan Facilities hanya menyentuh diangka 50 kebawah. Pada tahun 2019-20 sampai dengan tahun 2021-22 terjadi penaikan antara Facilities dan Fleet, Fleet menyentuh dibawah 200 dan Facilitie menyentuh dibawah 125')
+    st.write('Visualisasi diatas menampilkan Area chart dari GHG scope bedasrkan tahun. Pada tahun 2005-06 menghasilkan Fleet tinggi sampai 200 sedangkan Facilities hanya menyentuh diangka 125, lanjut pada tahun 2011-12 sampai 2015-16 terjadi penurunan antara Facilities dan Fleet. Akan tetapi Fleet masih diperingkat atas dengan menyentuh angka 100 sedangkan Facilities hanya menyentuh diangka 50 kebawah. Pada tahun 2019-20 sampai dengan tahun 2021-22 terjadi penaikan antara Facilities dan Fleet, Fleet menyentuh dibawah 200 dan Facilitie menyentuh dibawah 125.')
 
 # Jika pilihan di sidebar adalah "Predict"
 elif nav_selection == "Predict":
