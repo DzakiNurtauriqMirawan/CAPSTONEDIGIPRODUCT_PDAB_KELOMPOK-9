@@ -51,6 +51,8 @@ if nav_selection == "Home":
     # Menampilkan tipe data dari setiap kolom
     st.write("Tipe Data:")
     st.write(df.dtypes)
+    st.write("Jumlah baris pada dataset: ", df.shape[0])
+    st.write("Jumlah kolom pada dataset: ", df.shape[1])
 
 # Jika pilihan di sidebar adalah "Distribusi"
 elif nav_selection == "Distribusi":
